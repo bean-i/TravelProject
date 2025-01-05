@@ -52,7 +52,6 @@ class TravelInfoTableViewController: UITableViewController {
         cell.subTitleLabel.font = .systemFont(ofSize: 13)
         cell.subTitleLabel.textColor = .darkGray
         
-        
         // 별 이미지
         cell.starImageView.image = UIImage(systemName: "star.fill")
         cell.starImageView.tintColor = .systemYellow
@@ -64,7 +63,14 @@ class TravelInfoTableViewController: UITableViewController {
         cell.starGrade.font = .systemFont(ofSize: 12)
         
         // 저장 수
-        cell.saveCount.text = row.save == nil ? "" : "저장 \(row.save!)"
+        if let save = row.save {
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            let count = numberFormatter.string(for: save)!
+            cell.saveCount.text = "저장 \(count)"
+        } else {
+            cell.saveCount.text = ""
+        }
         cell.saveCount.textColor = .lightGray
         cell.saveCount.font = .systemFont(ofSize: 12)
         
@@ -87,7 +93,6 @@ class TravelInfoTableViewController: UITableViewController {
             let image = heart ? "heart.fill" : "heart"
             cell.likeButton.setImage(UIImage(systemName: image), for: .normal)
         } else {
-            print("like가 nil값이에영")
             // 만약 nil값이 있다면, 기본 값으로
             cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
