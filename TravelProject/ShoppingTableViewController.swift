@@ -9,81 +9,89 @@ import UIKit
 
 class ShoppingTableViewController: UITableViewController {
 
+    var shopping = ShoppingInfo().shopping {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    @IBOutlet var itemTextField: UITextField!
+    @IBOutlet var addButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        headerViewDesign()
     }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    
+    func headerViewDesign() {
+        itemTextField.backgroundColor = .systemGray6
+        itemTextField.layer.cornerRadius = 10
+        itemTextField.leftView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 16.0, height: 0.0))
+        itemTextField.leftViewMode = .always
+        itemTextField.placeholder = "무엇을 구매하실 건가요?"
+        
+        addButton.setTitle("추가", for: .normal)
+        addButton.tintColor = .black
+        addButton.backgroundColor = .systemGray5
+        addButton.layer.cornerRadius = 10
     }
-
+    
+    @IBAction func addButtonTapped(_ sender: UIButton) {
+        print(#function)
+        let newItem = Shopping(title: itemTextField.text, purchase: false, bookMark: false)
+        shopping.append(newItem)
+    }
+    
+    @objc func purchaseButtonTapped(_ sender: UIButton) {
+        print(#function)
+        shopping[sender.tag].purchase.toggle()
+    }
+    
+    @objc func starButtonTapped(_ sender: UIButton) {
+        print(#function)
+        shopping[sender.tag].bookMark.toggle()
+    }
+    
+    
+    // 셀 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return shopping.count
     }
-
-    /*
+    
+    // 셀 디자인
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
+        
+        let row = shopping[indexPath.row]
+        
+        cell.selectionStyle = .none
+        
+        cell.cellView.layer.cornerRadius = 10
+        cell.cellView.backgroundColor = .systemGray6
+        
+        // 구매 완료 버튼
+        cell.purchaseButton.tag = indexPath.row
+        let purchaseImage = row.purchase ? "checkmark.square.fill" : "checkmark.square"
+        cell.purchaseButton.setImage(UIImage(systemName: purchaseImage), for: .normal)
+        cell.purchaseButton.tintColor = .black
+        cell.purchaseButton.addTarget(self, action: #selector(purchaseButtonTapped), for: .touchUpInside)
+        
+        // 타이틀 레이블
+        cell.titleLabel.text = row.title
+        
+        // 즐겨찾기 버튼
+        cell.starButton.tag = indexPath.row
+        let starButtonImage = row.bookMark ? "star.fill" : "star"
+        cell.starButton.setImage(UIImage(systemName: starButtonImage), for: .normal)
+        cell.starButton.tintColor = .black
+        cell.starButton.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
 }
