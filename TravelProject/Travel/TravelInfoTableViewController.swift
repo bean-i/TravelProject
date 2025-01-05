@@ -88,7 +88,7 @@ class TravelInfoTableViewController: UITableViewController {
             cell.likeButton.setImage(UIImage(systemName: image), for: .normal)
         } else {
             print("like가 nil값이에영")
-            // 만약 nil값이 있다면, 기본 값으로..
+            // 만약 nil값이 있다면, 기본 값으로
             cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
         cell.likeButton.tintColor = .white
@@ -96,9 +96,4 @@ class TravelInfoTableViewController: UITableViewController {
         return cell
     }
     
-    
-    
-    // 셀의 높이
-    
-
 }

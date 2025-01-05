@@ -232,6 +232,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="333" height="64"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
+                                            <connections>
+                                                <action selector="returnKeyTapped:" destination="saX-I3-LxO" eventType="editingDidEndOnExit" id="xS7-Wd-1tH"/>
+                                            </connections>
                                         </textField>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZGO-9W-fCQ">
                                             <rect key="frame" x="267" y="15" width="51" height="34"/>

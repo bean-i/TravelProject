@@ -38,21 +38,26 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     @IBAction func addButtonTapped(_ sender: UIButton) {
-        print(#function)
         let newItem = Shopping(title: itemTextField.text, purchase: false, bookMark: false)
         shopping.append(newItem)
+        itemTextField.text = ""
+        view.endEditing(true)
+    }
+    
+    @IBAction func returnKeyTapped(_ sender: UITextField) {
+        let newItem = Shopping(title: itemTextField.text, purchase: false, bookMark: false)
+        shopping.append(newItem)
+        itemTextField.text = ""
+        view.endEditing(true)
     }
     
     @objc func purchaseButtonTapped(_ sender: UIButton) {
-        print(#function)
         shopping[sender.tag].purchase.toggle()
     }
     
     @objc func starButtonTapped(_ sender: UIButton) {
-        print(#function)
         shopping[sender.tag].bookMark.toggle()
     }
-    
     
     // 셀 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
