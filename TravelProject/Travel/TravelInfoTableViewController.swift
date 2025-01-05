@@ -42,6 +42,8 @@ class TravelInfoTableViewController: UITableViewController {
         
         let row = addInfo[index]
         
+        cell.selectionStyle = .none
+        
         // 광고 배경
         cell.addView.layer.cornerRadius = 10
         cell.addView.backgroundColor = row.bgColor
