@@ -200,6 +200,57 @@
                                     <outlet property="travelImageView" destination="b4o-Je-Ku2" id="b2P-Pm-cF4"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TravelInfoAddTableViewCell" rowHeight="95" id="h1E-o3-xKV" customClass="TravelInfoAddTableViewCell" customModule="TravelProject" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="219" width="393" height="95"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h1E-o3-xKV" id="69g-eF-kQf">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="95"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bFb-XN-wfS">
+                                            <rect key="frame" x="40" y="5" width="313" height="85"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="광고 타이틀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EWC-eX-LsD">
+                                                    <rect key="frame" x="40" y="10" width="233" height="65"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gM7-EW-i2u">
+                                                    <rect key="frame" x="280" y="3" width="30" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="25" id="Y3t-Lc-JQQ"/>
+                                                        <constraint firstAttribute="width" constant="30" id="z0N-Ue-7CR"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="EWC-eX-LsD" secondAttribute="trailing" constant="40" id="7oe-mF-PdX"/>
+                                                <constraint firstItem="EWC-eX-LsD" firstAttribute="leading" secondItem="bFb-XN-wfS" secondAttribute="leading" constant="40" id="FgK-ui-J1V"/>
+                                                <constraint firstItem="EWC-eX-LsD" firstAttribute="top" secondItem="bFb-XN-wfS" secondAttribute="top" constant="10" id="Jde-fO-He4"/>
+                                                <constraint firstItem="gM7-EW-i2u" firstAttribute="top" secondItem="bFb-XN-wfS" secondAttribute="top" constant="3" id="jEd-ju-6d0"/>
+                                                <constraint firstAttribute="trailing" secondItem="gM7-EW-i2u" secondAttribute="trailing" constant="3" id="tQs-KM-S47"/>
+                                                <constraint firstAttribute="bottom" secondItem="EWC-eX-LsD" secondAttribute="bottom" constant="10" id="xEL-Es-Ogm"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="bFb-XN-wfS" firstAttribute="top" secondItem="69g-eF-kQf" secondAttribute="top" constant="5" id="WY4-J1-eDw"/>
+                                        <constraint firstAttribute="trailing" secondItem="bFb-XN-wfS" secondAttribute="trailing" constant="40" id="eBs-JL-pvF"/>
+                                        <constraint firstAttribute="bottom" secondItem="bFb-XN-wfS" secondAttribute="bottom" constant="5" id="fON-fE-8Ov"/>
+                                        <constraint firstItem="bFb-XN-wfS" firstAttribute="leading" secondItem="69g-eF-kQf" secondAttribute="leading" constant="40" id="ix4-th-XZP"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="addSign" destination="gM7-EW-i2u" id="toe-V4-8G3"/>
+                                    <outlet property="addTitle" destination="EWC-eX-LsD" id="111-WU-aNc"/>
+                                    <outlet property="addView" destination="bFb-XN-wfS" id="VZj-hC-frI"/>
+                                </connections>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="Vfg-ze-J92" id="F8C-e9-cHp"/>

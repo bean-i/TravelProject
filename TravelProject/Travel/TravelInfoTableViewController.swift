@@ -11,10 +11,10 @@ import Kingfisher
 class TravelInfoTableViewController: UITableViewController {
 
     var travelInfo = TravelInfo().travel
+    let addInfo = AddInfo().add
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
@@ -32,8 +32,38 @@ class TravelInfoTableViewController: UITableViewController {
         return travelInfo.count
     }
     
-    // 셀의 디자인
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func makeAddCell(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoAddTableViewCell", for: indexPath) as! TravelInfoAddTableViewCell
+        // 광고 정보에서 랜덤으로 뽑아서 보여주기 -> 광고가 중복으로 계속 뜰 수 있음
+        let index = Int.random(in: 0..<addInfo.count)
+        
+        // 광고 셀의 경우, indexPath.row가 4의 배수만 들어오기 때문에, 광고 배열의 길이에 맞추기 위헤 4 나누기 -> 광고 정보와 매거진 정보의 개수를 항상 맞춰주어야 함 (매거진 정보의 개수가 너무 많을 경우, 매거진행/4에 해당하는 광고 정보가 없을 수 있음)
+//        let index = indexPath.row/4
+        
+        let row = addInfo[index]
+        
+        // 광고 배경
+        cell.addView.layer.cornerRadius = 10
+        cell.addView.backgroundColor = row.bgColor
+        
+        // 광고 타이틀
+        cell.addTitle.text = row.title
+        cell.addTitle.font = .systemFont(ofSize: 16, weight: .heavy)
+        cell.addTitle.numberOfLines = 0
+        cell.addTitle.textAlignment = .center
+        
+        // 광고 사인
+        cell.addSign.backgroundColor = .white
+        cell.addSign.clipsToBounds = true
+        cell.addSign.layer.cornerRadius = 10
+        cell.addSign.textAlignment = .center
+        cell.addSign.text = "AD"
+        cell.addSign.font = .systemFont(ofSize: 12)
+        
+        return cell
+    }
+    
+    func makeInfoCell(_ tableView: UITableView, _ indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TravelInfoTableViewCell", for: indexPath) as! TravelInfoTableViewCell
         
         let row = travelInfo[indexPath.row]
@@ -99,6 +129,21 @@ class TravelInfoTableViewController: UITableViewController {
         cell.likeButton.tintColor = .white
         
         return cell
+    }
+    
+    // 셀의 디자인
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // 4번째 행마다 광고 넣기
+        // 광고 넣을 행 계산
+        let addRow = indexPath.row % 4
+        
+        switch addRow {
+        case 0: // 광고 셀
+            return makeAddCell(tableView, indexPath)
+        default: // 보통 셀
+            return makeInfoCell(tableView, indexPath)
+        }
     }
     
 }
