@@ -399,6 +399,82 @@
             </objects>
             <point key="canvasLocation" x="1364.1221374045801" y="1339.4366197183099"/>
         </scene>
+        <!--인기 도시-->
+        <scene sceneID="lDC-7e-sMY">
+            <objects>
+                <tableViewController id="jJN-bm-Grp" customClass="CityTableViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="oWa-gA-3uJ">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="UoJ-AZ-252">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="104"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AAL-a7-bK0">
+                                    <rect key="frame" x="20" y="10" width="353" height="39"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="T5R-dD-zun"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                    <connections>
+                                        <action selector="returnKeyTapped:" destination="jJN-bm-Grp" eventType="editingDidEndOnExit" id="JME-ds-lYG"/>
+                                        <action selector="textFieldChanged:" destination="jJN-bm-Grp" eventType="editingChanged" id="ka9-bg-DKK"/>
+                                    </connections>
+                                </textField>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="njS-qu-RvI">
+                                    <rect key="frame" x="20" y="59" width="353" height="36"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="L9T-pt-d4Q"/>
+                                    </constraints>
+                                    <segments>
+                                        <segment title="모두"/>
+                                        <segment title="국내"/>
+                                        <segment title="해외"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="citySegmentChanged:" destination="jJN-bm-Grp" eventType="valueChanged" id="Kxi-zG-cSa"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="njS-qu-RvI" secondAttribute="bottom" constant="10" id="6m3-vE-Rdw"/>
+                                <constraint firstItem="AAL-a7-bK0" firstAttribute="top" secondItem="UoJ-AZ-252" secondAttribute="top" constant="10" id="B5o-HX-VfM"/>
+                                <constraint firstAttribute="trailing" secondItem="njS-qu-RvI" secondAttribute="trailing" constant="20" id="Lj7-C0-Aff"/>
+                                <constraint firstItem="AAL-a7-bK0" firstAttribute="leading" secondItem="UoJ-AZ-252" secondAttribute="leading" constant="20" id="Zwt-y2-vqH"/>
+                                <constraint firstAttribute="trailing" secondItem="AAL-a7-bK0" secondAttribute="trailing" constant="20" id="ebZ-BN-3mv"/>
+                                <constraint firstItem="njS-qu-RvI" firstAttribute="top" secondItem="AAL-a7-bK0" secondAttribute="bottom" constant="10" id="gWn-jv-qqr"/>
+                                <constraint firstAttribute="bottom" secondItem="njS-qu-RvI" secondAttribute="bottom" constant="10" id="lap-xf-wL2"/>
+                                <constraint firstItem="njS-qu-RvI" firstAttribute="leading" secondItem="UoJ-AZ-252" secondAttribute="leading" constant="20" id="lcR-AE-WCO"/>
+                            </constraints>
+                        </view>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WIX-m1-VSk">
+                                <rect key="frame" x="0.0" y="154" width="393" height="44.666667938232422"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WIX-m1-VSk" id="hEe-oI-b3W">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="44.666667938232422"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="jJN-bm-Grp" id="d8O-qk-VrQ"/>
+                            <outlet property="delegate" destination="jJN-bm-Grp" id="Xep-4s-mdL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="인기 도시" id="xof-Wg-ls7"/>
+                    <connections>
+                        <outlet property="citySegment" destination="njS-qu-RvI" id="ttd-eC-53V"/>
+                        <outlet property="searchTextField" destination="AAL-a7-bK0" id="Num-NT-ouA"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hZF-um-Y18" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1351.9083969465648" y="2019.7183098591549"/>
+        </scene>
         <!--Travel-->
         <scene sceneID="VYA-37-UUR">
             <objects>
@@ -474,15 +550,36 @@
                         <segue destination="BeX-YI-Kj1" kind="relationship" relationship="viewControllers" id="Vw1-fV-TY7"/>
                         <segue destination="jwe-9P-fsO" kind="relationship" relationship="viewControllers" id="aOV-1N-uzV"/>
                         <segue destination="uKy-Bb-0VQ" kind="relationship" relationship="viewControllers" id="lxn-4z-ZpF"/>
+                        <segue destination="2qg-SY-9nU" kind="relationship" relationship="viewControllers" id="IjU-fW-2EX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JEI-bl-hYT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-579" y="663"/>
         </scene>
+        <!--City-->
+        <scene sceneID="qpK-48-2ni">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2qg-SY-9nU" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="City" image="globe.asia.australia.fill" catalog="system" id="KJ1-Sm-mkS"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ibH-1i-NQg">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jJN-bm-Grp" kind="relationship" relationship="rootViewController" id="RJ0-Pa-5WC"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="biU-Qc-44C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="437" y="2020"/>
+        </scene>
     </scenes>
     <resources>
         <image name="airplane.departure" catalog="system" width="128" height="84"/>
+        <image name="globe.asia.australia.fill" catalog="system" width="128" height="123"/>
         <image name="info.bubble" catalog="system" width="128" height="110"/>
         <image name="list.bullet.clipboard" catalog="system" width="98" height="128"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
