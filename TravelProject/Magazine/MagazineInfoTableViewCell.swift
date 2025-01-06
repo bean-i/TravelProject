@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MagazineInfoTableViewCell: UITableViewCell {
     
@@ -16,23 +17,15 @@ class MagazineInfoTableViewCell: UITableViewCell {
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     
-//    var dateFormat: String {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyMMdd"
-//        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-//        
-//        if let date = dateFormatter.date(from: dateLabel.text ?? "") {
-//            dateFormatter.dateFormat = "yy년 M월 d일"
-//            let stringDate = dateFormatter.string(from: date)
-//            return stringDate
-//        } else {
-//            return dateLabel.text ?? ""
-//        }
-//    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
+        mainImageView.image = UIImage(systemName: "tray.and.arrow.down")
         configure()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        mainImageView.image = UIImage(systemName: "tray.and.arrow.down")
     }
     
     func configure() {

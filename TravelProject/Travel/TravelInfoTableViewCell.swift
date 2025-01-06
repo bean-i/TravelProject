@@ -23,6 +23,7 @@ class TravelInfoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        travelImageView.backgroundColor = .black
         configure()
     }
     
@@ -30,7 +31,7 @@ class TravelInfoTableViewCell: UITableViewCell {
         super.prepareForReuse()
 
         subTitleLabel.text = ""
-        travelImageView.image = UIImage(systemName: "star")
+        travelImageView.image = UIImage(systemName: "tray.and.arrow.down")
         starGrade.text = ""
         saveCount.text = ""
         likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -66,7 +67,7 @@ class TravelInfoTableViewCell: UITableViewCell {
         likeButton.tintColor = .white
     }
     
-    func configureData(row: Travel, index: Int) {
+    func configureData(row: Travel) {
         // 타이틀 레이블
         titleLabel.text = row.title
         

@@ -43,7 +43,7 @@ class TravelInfoTableViewController: UITableViewController {
         cell.likeButton.tag = indexPath.row
         cell.likeButton.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
         
-        cell.configureData(row: travelInfo[indexPath.row], index: indexPath.row)
+        cell.configureData(row: travelInfo[indexPath.row])
         
         return cell
     }

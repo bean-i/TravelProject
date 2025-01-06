@@ -31,6 +31,7 @@ class TravelInfoAddTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        // 추가
     }
     
     func configure() {
