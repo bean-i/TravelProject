@@ -59,37 +59,21 @@ class ShoppingTableViewController: UITableViewController {
         shopping[sender.tag].bookMark.toggle()
     }
     
-    // 셀 개수
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return shopping.count
     }
     
-    // 셀 디자인
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ShoppingTableViewCell", for: indexPath) as! ShoppingTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: ShoppingTableViewCell.identifier, for: indexPath) as! ShoppingTableViewCell
         
-        let row = shopping[indexPath.row]
+        cell.configureData(row: shopping[indexPath.row])
         
-        cell.selectionStyle = .none
-        
-        cell.cellView.layer.cornerRadius = 10
-        cell.cellView.backgroundColor = .systemGray6
-        
-        // 구매 완료 버튼
+        // 구매 버튼 태그, 액션
         cell.purchaseButton.tag = indexPath.row
-        let purchaseImage = row.purchase ? "checkmark.square.fill" : "checkmark.square"
-        cell.purchaseButton.setImage(UIImage(systemName: purchaseImage), for: .normal)
-        cell.purchaseButton.tintColor = .black
         cell.purchaseButton.addTarget(self, action: #selector(purchaseButtonTapped), for: .touchUpInside)
         
-        // 타이틀 레이블
-        cell.titleLabel.text = row.title
-        
-        // 즐겨찾기 버튼
+        // 즐겨찾기 버튼 태그, 액션
         cell.starButton.tag = indexPath.row
-        let starButtonImage = row.bookMark ? "star.fill" : "star"
-        cell.starButton.setImage(UIImage(systemName: starButtonImage), for: .normal)
-        cell.starButton.tintColor = .black
         cell.starButton.addTarget(self, action: #selector(starButtonTapped), for: .touchUpInside)
         
         return cell
