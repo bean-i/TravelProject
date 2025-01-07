@@ -13,6 +13,8 @@ class TravelInfoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.backButtonTitle = ""
     }
     
     @objc func likeButtonTapped(_ sender: UIButton) {
@@ -46,6 +48,32 @@ class TravelInfoTableViewController: UITableViewController {
         cell.configureData(row: travelInfo[indexPath.row])
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function)
+        
+        if travelInfo[indexPath.row].ad {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TravelInfoAddDetailViewController") as! TravelInfoAddDetailViewController
+            vc.detailAdd = travelInfo[indexPath.row].title
+            
+            let nav = UINavigationController(rootViewController: vc)
+            nav.navigationBar.tintColor = .black
+            
+            nav.modalPresentationStyle = .fullScreen
+            nav.modalTransitionStyle = .flipHorizontal
+            
+            present(nav, animated: true)
+        } else {
+            let vc = storyboard?.instantiateViewController(withIdentifier: "TravelInfoDetailViewController") as! TravelInfoDetailViewController
+            
+            vc.detailImage = travelInfo[indexPath.row].travel_image
+            vc.detailTitle = travelInfo[indexPath.row].title
+            vc.detailDescription = travelInfo[indexPath.row].description
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
