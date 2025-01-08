@@ -70,6 +70,17 @@ class CityCollectionViewController: UIViewController, UICollectionViewDelegate, 
         return currentCity.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "CityDetailViewController") as! CityDetailViewController
+        
+        vc.mainImage = currentCity[indexPath.row].city_image
+        vc.cityName = currentCity[indexPath.row].city_name
+        vc.cityEngName = currentCity[indexPath.row].city_english_name
+        vc.cityExplain = currentCity[indexPath.row].city_explain
+        
+        present(vc, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CityCollectionViewCell", for: indexPath) as! CityCollectionViewCell
         

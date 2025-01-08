@@ -577,6 +577,57 @@
             </objects>
             <point key="canvasLocation" x="1351.9083969465648" y="2019.7183098591549"/>
         </scene>
+        <!--City Detail View Controller-->
+        <scene sceneID="oLN-rT-KzE">
+            <objects>
+                <viewController storyboardIdentifier="CityDetailViewController" id="zo6-sD-xmS" customClass="CityDetailViewController" customModule="TravelProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wQA-ZH-GOc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="imM-Ut-hWe">
+                                <rect key="frame" x="30" y="89" width="333" height="222"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="imM-Ut-hWe" secondAttribute="height" multiplier="1.5:1" id="Lb3-wz-aOl"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6r-Wf-D5Q">
+                                <rect key="frame" x="30" y="351.33333333333331" width="333" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mGo-Wb-fo6">
+                                <rect key="frame" x="30" y="321" width="333" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="au9-Ib-hSU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="imM-Ut-hWe" firstAttribute="top" secondItem="au9-Ib-hSU" secondAttribute="top" constant="30" id="6BY-cK-lWs"/>
+                            <constraint firstItem="y6r-Wf-D5Q" firstAttribute="leading" secondItem="au9-Ib-hSU" secondAttribute="leading" constant="30" id="7Kf-gi-LR3"/>
+                            <constraint firstItem="mGo-Wb-fo6" firstAttribute="top" secondItem="imM-Ut-hWe" secondAttribute="bottom" constant="10" id="7VO-rk-jrY"/>
+                            <constraint firstItem="au9-Ib-hSU" firstAttribute="trailing" secondItem="mGo-Wb-fo6" secondAttribute="trailing" constant="30" id="BH1-xR-jDm"/>
+                            <constraint firstItem="au9-Ib-hSU" firstAttribute="trailing" secondItem="y6r-Wf-D5Q" secondAttribute="trailing" constant="30" id="ObR-6l-9Mn"/>
+                            <constraint firstItem="au9-Ib-hSU" firstAttribute="trailing" secondItem="imM-Ut-hWe" secondAttribute="trailing" constant="30" id="hu3-GA-vUz"/>
+                            <constraint firstItem="y6r-Wf-D5Q" firstAttribute="top" secondItem="mGo-Wb-fo6" secondAttribute="bottom" constant="10" id="jnG-Ce-3Vz"/>
+                            <constraint firstItem="imM-Ut-hWe" firstAttribute="leading" secondItem="au9-Ib-hSU" secondAttribute="leading" constant="30" id="l7O-BT-07d"/>
+                            <constraint firstItem="mGo-Wb-fo6" firstAttribute="leading" secondItem="au9-Ib-hSU" secondAttribute="leading" constant="30" id="ziS-lH-6Vx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cityExplainLabel" destination="y6r-Wf-D5Q" id="o5b-27-UZZ"/>
+                        <outlet property="cityNameLabel" destination="mGo-Wb-fo6" id="TFg-QX-aHw"/>
+                        <outlet property="mainImageView" destination="imM-Ut-hWe" id="sHf-fq-Ptf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1dZ-6T-x3n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2190" y="2705"/>
+        </scene>
         <!--인기 도시-->
         <scene sceneID="hfX-8V-ojg">
             <objects>
