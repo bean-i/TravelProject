@@ -25,7 +25,9 @@ class GameViewController: UIViewController, setView {
         }
     }
     
-    var maxSelectCellCount: Int = 0
+    var maxSelectCellCount: Int = 0 // 선택된 셀의 개수
+    var previousCell: NumberCollectionViewCell? = NumberCollectionViewCell() // 이전에 선택한 셀
+    var previousIndex: IndexPath? // 이전에 선택한 셀의 indexPath
     
     // 게임 진행 시, gameNums 배열을 재설정할 때 사용할 시작 인덱스와 마지막 인덱스
     var startIndex: Int = 1
@@ -137,6 +139,7 @@ class GameViewController: UIViewController, setView {
         gameNums = Array(startIndex...lastIndex)
         print("업데이트: ", gameNums)
         maxSelectCellCount -= 1
+        previousIndex = nil
     }
 
 }
@@ -150,11 +153,19 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NumberCollectionViewCell.identifier, for: indexPath) as! NumberCollectionViewCell
 
-        cell.circleView.backgroundColor = .white
-        cell.numberLabel.textColor = .black
-        cell.numberLabel.text = String(gameNums[indexPath.item])
-        cell.select = false
-
+        
+        if indexPath == previousIndex {
+            cell.circleView.backgroundColor = .black
+            cell.numberLabel.textColor = .white
+            cell.numberLabel.text = String(gameNums[indexPath.item])
+            cell.select = true
+        } else {
+            cell.circleView.backgroundColor = .white
+            cell.numberLabel.textColor = .black
+            cell.numberLabel.text = String(gameNums[indexPath.item])
+            cell.select = false
+        }
+        
         DispatchQueue.main.async {
             cell.circleView.layer.cornerRadius = cell.circleView.frame.width / 2
         }
@@ -169,11 +180,18 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
         
         // 중복 터치 방지
         if maxSelectCellCount == 0 { // 터치 가능
+            previousCell = cell
+            previousIndex = indexPath
             maxSelectCellCount += 1
             selectCell(cell, at: indexPath.item)
         } else if cell.select { // 선택한 셀의 개수가 1이상인데, 그게 나 자신이라면
             maxSelectCellCount -= 1
             deselectCell(cell)
+        } else {
+            deselectCell(previousCell!)
+            previousCell = cell
+            previousIndex = indexPath
+            selectCell(cell, at: indexPath.item)
         }
         print("선택된 셀의 개수: ", maxSelectCellCount)
         print(userSelectNumber)
