@@ -90,6 +90,8 @@ class GameViewController: UIViewController, setView {
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
         layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
         layout.itemSize = CGSize(width: totalCellWidth / cellCount, height: totalCellWidth / cellCount)
         
@@ -129,6 +131,7 @@ class GameViewController: UIViewController, setView {
             mainTitleLabel.text = "DOWN"
         } else {
             mainTitleLabel.text = "GOOD!"
+            getResultButton.isEnabled = false
             return
         }
         gameNums = Array(startIndex...lastIndex)
