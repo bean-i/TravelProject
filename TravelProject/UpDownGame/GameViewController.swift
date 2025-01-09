@@ -155,6 +155,7 @@ extension GameViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
         
         if indexPath == previousIndex {
+            previousCell = cell
             cell.circleView.backgroundColor = .black
             cell.numberLabel.textColor = .white
             cell.numberLabel.text = String(gameNums[indexPath.item])
