@@ -8,11 +8,21 @@
 import UIKit
 import MapKit
 
+//struct User: Hashable {
+//    
+//}
+
+//struct Location: Hashable {
+//    let lat: Double
+//    let lon: Double
+//}
 
 class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
     
     @IBOutlet var restaurantSegment: UISegmentedControl!
     @IBOutlet var restaurantMapView: MKMapView!
+
+//    var users: Set<[User]> = []
     
 //    var locations: Set<(Double, Double)> = []
     
