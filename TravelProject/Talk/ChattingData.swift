@@ -11,7 +11,7 @@ enum User: String {
     case jack = "Jack"
     case bran = "Bran"
     case den = "Den"
-    case user //본인
+    case user = "Bean"
     case other_friend = "내옆자리의앞자리에개발잘하는친구"
     case simsim = "심심이"
     
@@ -93,7 +93,7 @@ let mockChatList: [ChatRoom] = [
                      message: "넵.."),
                 Chat(user: .jack,
                      date: "2025-01-11 14:42",
-                     message: "면담 때 매일 10시까지 남아있겠다는 말 잘 지키시는지 확인할게요~~/n아 매일은 오늘도 포함인거 아시죠?!"),
+                     message: "면담 때 매일 10시까지 남아있겠다는 말 잘 지키시는지 확인할게요~~\n아 매일은 오늘도 포함인거 아시죠?!"),
                 Chat(user: .user,
                      date: "2025-01-11 14:50",
                      message: "네...."),
