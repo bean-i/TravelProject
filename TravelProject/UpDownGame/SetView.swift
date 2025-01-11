@@ -15,4 +15,6 @@ import Foundation
     @objc optional func textFieldDesign()
     @objc optional func buttonDesign()
     @objc optional func collectionViewDesign()
+    @objc optional func searchBarDesign()
+    @objc optional func tableViewDesign()
 }
