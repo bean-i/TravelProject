@@ -16,6 +16,7 @@ class ChattingViewController: UIViewController, setView {
     var chatDetailList: [Chat] = []
 
     @IBOutlet var chatTableView: UITableView!
+    @IBOutlet var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +30,18 @@ class ChattingViewController: UIViewController, setView {
     
     func setDesign() {
         basicDesign()
+        textFieldDesign()
         tableViewDesign()
     }
     
     func basicDesign() {
         navigationItem.title = chatRoomName
+    }
+    
+    func textFieldDesign() {
+        textView.delegate = self
+        textView.backgroundColor = .lightGray
+        textView.text = "메시지를 입력하세요"
     }
     
     func tableViewDesign() {
@@ -49,7 +57,10 @@ class ChattingViewController: UIViewController, setView {
         chatTableView.register(outgoingXib, forCellReuseIdentifier: outgoingTableViewCell.identifier)
     }
     
-
+    @IBAction func tapGesture(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
 }
 
 extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,5 +91,10 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
 
     }
     
-    
+}
+
+extension ChattingViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.text = nil
+    }
 }

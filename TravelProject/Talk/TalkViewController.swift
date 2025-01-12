@@ -12,6 +12,7 @@ class TalkViewController: UIViewController, setView {
     @IBOutlet var searchBar: UISearchBar!
     @IBOutlet var chatRoomCollectionView: UICollectionView!
     
+    
     var currentChatList: [ChatRoom] = mockChatList {
         didSet {
             chatRoomCollectionView.reloadData()
