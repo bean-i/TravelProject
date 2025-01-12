@@ -106,7 +106,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sic-Tk-WVS" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="GkW-jr-X2l">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GkW-jr-X2l">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
