@@ -53,7 +53,6 @@ class TalkViewController: UIViewController, setView {
         layout.minimumInteritemSpacing = 0
         
         let deviceWidth: CGFloat = UIScreen.main.bounds.width
-        // heigth을 width의 비율로 줄지, 정해진 값으로 줄지 생각해봐!
         layout.itemSize = CGSize(width: deviceWidth, height: 80)
         
         chatRoomCollectionView.collectionViewLayout = layout
@@ -84,19 +83,17 @@ extension TalkViewController: UICollectionViewDelegate, UICollectionViewDataSour
             print("전환할 화면이 없는데요..")
             return
         }
-        // 무슨 데이터를 넘겨줘야 할까?
-        // indexPath.item에 있는 셀의 태그와 mockChatList의 chatRoom의 chatroomId가 같은 것 찾긔 ~~
+
+        // indexPath.item에 있는 셀의 태그와 mockChatList의 chatRoom의 chatroomId가 같은 것 찾기
         guard let cellTag = chatRoomCollectionView.cellForItem(at: indexPath)?.tag else {
             print("그런 태그 가진 애 없어요~~")
             return
         }
         
         let room = mockChatList.filter{ $0.chatroomId == cellTag }[0]
-//        print(room)
-//        print(room[0])
-        // 여기서 왜 room[0]으로 접근해야하지.........?filter가 뭘 반환하는지 알아보자앗
         vc.chatRoomName = room.chatroomName
         vc.chatDetailList = room.chatList
+        vc.lastIndex = IndexPath(row: room.chatList.count - 1, section: 0)
         
         navigationController?.pushViewController(vc, animated: true)
         
@@ -119,14 +116,14 @@ extension TalkViewController: UISearchBarDelegate {
         for chatRoom in mockChatList {
             flag = false
             for chat in chatRoom.chatList {
-                // 검색하는 내용이랑 같우면은.. currentChatList 업데이트 해주긔
+                // 검색하는 내용이랑 같으면 currentChatList 업데이트
                 if searchText.lowercased() == chat.user.rawValue.lowercased() {
                     print("같당")
                     flag = true
                     continue
                 }
             }
-            if flag { // 검색하는 사용자가 있으면 넣어주긔
+            if flag { // 검색하는 사용자가 있으면 넣어주기
                 updateRooms.append(chatRoom)
                 currentChatList = updateRooms
             }

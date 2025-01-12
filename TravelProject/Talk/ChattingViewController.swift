@@ -10,6 +10,7 @@ import UIKit
 class ChattingViewController: UIViewController, setView {
 
     static let identifier = "ChattingViewController"
+    var lastIndex: IndexPath = IndexPath()
     
     var chatRoomName: String = ""
     var chatDetailList: [Chat] = []
@@ -18,11 +19,12 @@ class ChattingViewController: UIViewController, setView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("데이터 왔어요><")
-        print(chatDetailList)
-        
         setDesign()
-        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
     }
     
     func setDesign() {
@@ -52,11 +54,6 @@ class ChattingViewController: UIViewController, setView {
 
 extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        guard let chatData = chatDetailList else {
-//            print("데이터가 없는디요..?")
-//            return 0 // 이 예외처리를 다른데서 해줘야 하나..?
-//        }
-        
         return chatDetailList.count
     }
     
