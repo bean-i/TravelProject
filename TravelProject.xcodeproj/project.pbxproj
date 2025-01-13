@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EAD548702D28043B000E0821 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = EAD5486F2D28043B000E0821 /* Kingfisher */; };
 		EADAFC202D2FD871001DA0D1 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = EADAFC1F2D2FD871001DA0D1 /* IQKeyboardManagerSwift */; };
+		EAE5119B2D34FB4400B7979E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = EAE5119A2D34FB4400B7979E /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE5119B2D34FB4400B7979E /* SnapKit in Frameworks */,
 				EAD548702D28043B000E0821 /* Kingfisher in Frameworks */,
 				EADAFC202D2FD871001DA0D1 /* IQKeyboardManagerSwift in Frameworks */,
 			);
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				EAD5486F2D28043B000E0821 /* Kingfisher */,
 				EADAFC1F2D2FD871001DA0D1 /* IQKeyboardManagerSwift */,
+				EAE5119A2D34FB4400B7979E /* SnapKit */,
 			);
 			productName = TravelProject;
 			productReference = EAD548502D280206000E0821 /* TravelProject.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				EAD5486E2D28043B000E0821 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				EADAFC1E2D2FD871001DA0D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				EAE511992D34FB4400B7979E /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = EAD548512D280206000E0821 /* Products */;
@@ -376,6 +380,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		EAE511992D34FB4400B7979E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -388,6 +400,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = EADAFC1E2D2FD871001DA0D1 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		EAE5119A2D34FB4400B7979E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EAE511992D34FB4400B7979E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

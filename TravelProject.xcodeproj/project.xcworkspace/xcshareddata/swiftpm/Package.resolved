@@ -1,5 +1,5 @@
 {
-  "originHash" : "6892ea0836a28eee458b51ec45ad36a8f574f205e9ba8a31982bf2678ec9a075",
+  "originHash" : "5c2bb4d80dbc4efa41ecddb7c24991e704b43f486e11eba8e3a7f4a7b123a020",
   "pins" : [
     {
       "identity" : "iqkeyboardcore",
@@ -80,6 +80,15 @@
       "state" : {
         "revision" : "e6749919f9761d573d37a7d7e78b1b854c191d7f",
         "version" : "8.1.3"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "2842e6e84e82eb9a8dac0100ca90d9444b0307f4",
+        "version" : "5.7.1"
       }
     }
   ],

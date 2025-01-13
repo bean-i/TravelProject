@@ -20,12 +20,22 @@ class ChattingViewController: UIViewController, setView {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function)
         setDesign()
+        DispatchQueue.main.async {
+            print("scroll")
+            self.chatTableView.scrollToRow(at: self.lastIndex, at: .bottom, animated: false)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(#function)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        chatTableView.scrollToRow(at: lastIndex, at: .bottom, animated: false)
+        print(#function)
     }
     
     func setDesign() {
@@ -65,16 +75,17 @@ class ChattingViewController: UIViewController, setView {
 
 extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(#function)
         return chatDetailList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 여기서 user가 나인지 아닌지 판단하고
         // 그거에따라 셀 두개 중에 하나 골라서 보여주기.
+        print(#function, indexPath)
         let row = chatDetailList[indexPath.row]
         
         if row.user == User.user {
-            print("나야...")
             let outgoingCell = tableView.dequeueReusableCell(withIdentifier: outgoingTableViewCell.identifier, for: indexPath) as! outgoingTableViewCell
             
             outgoingCell.configureData(row)
